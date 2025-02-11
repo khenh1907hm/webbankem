@@ -50,7 +50,13 @@ class ProductController
             $price = $_POST['price'] ?? '';
             $category_id = $_POST['category_id'] ?? null;
 
-            $result = $this->productModel->addProduct($name, $description, $price, $category_id);
+            if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+                $image = $this ->uploadImage($_FILES['image']);
+            }else{
+                $image= "";
+            }
+
+            $result = $this->productModel->addProduct($name, $description, $price, $category_id,$image);
 
             if (is_array($result)) {
                 $errors = $result;
@@ -83,7 +89,13 @@ class ProductController
             $price = $_POST['price'];
             $category_id = $_POST['category_id'];
 
-            $edit = $this->productModel->updateProduct($id, $name, $description, $price, $category_id);
+            if(isset($_FILES['image']) && $_FILES['image']['error'] == 0){
+                $image = $this ->uploadImage($_FILES['image']);
+            }else{
+                $image= $_POST['existing_image'];
+            }
+
+            $edit = $this->productModel->updateProduct($id, $name, $description, $price, $category_id,$image);
 
             if ($edit) {
                 header('Location: /webbanhang/Product');
@@ -100,6 +112,63 @@ class ProductController
         } else {
             echo "Đã xảy ra lỗi khi xóa sản phẩm.";
         }
+    }
+    private function uploadImage($file)
+    {
+        $target_dir = "uploads/";
+
+        // Kiểm tra và tạo thư mục nếu chưa tồn tại
+        if  (!is_dir($target_dir)){
+            mkdir($target_dir, 0777, true);
+        }
+
+        $target_file = $target_dir . basename($file["name"]);
+        $imageFileType = strtolower(pathinfo($target_file, PATHINFO_EXTENSION));
+
+        // Kiểm tra xem file có phải là hình ảnh không
+        $check = getimagesize($file["tmp_name"]);
+        if ($check === false) {
+        throw new Exception("File không phải là hình ảnh.");
+        }
+
+        // Kiểm tra kích thước file (10 MB = 10 * 1024 * 1024 bytes)
+        if ($file["size"] > 10 * 1024 * 1024) {
+            throw new Exception("Hình ảnh có kích thước quá lớn.");
+        }
+
+        // Chỉ cho phép một số định dạng hình ảnh nhất định
+        if ($imageFileType != "jpg" && $imageFileType != "png" && $imageFileType !="jpeg" && $imageFileType != "gif") {
+        throw new Exception("Chỉ cho phép các định dạng JPG, JPEG, PNG và GIF.");
+        }
+
+        // Lưu file
+        if (!move_uploaded_file($file["tmp_name"], $target_file)) {
+            throw new Exception("Có lỗi xảy ra khi tải lên hình ảnh.");
+        }
+        return $target_file;
+    
+    }
+    public function addToCart($id)
+    {
+    $product = $this->productModel->getProductById($id);
+    if (!$product) {
+        echo "Không tìm thấy sản phẩm.";
+        return;
+    }
+    if (!isset($_SESSION['cart'])) {
+        $_SESSION['cart'] = [];
+    }
+    if (isset($_SESSION['cart'][$id])) {
+        $_SESSION['cart'][$id]['quantity']++;
+    } else {
+        $_SESSION['cart'][$id] = [
+            'name' => $product->name,
+            'price' => $product->price,
+            'quantity' => 1,
+            'image' => $product->image
+        ];
+    }
+    header('Location: /webbanhang/Product/cart');
     }
 }
 ?>

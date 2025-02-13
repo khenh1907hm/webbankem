@@ -23,6 +23,7 @@
             
             <a href="/webbanhang/Product/edit/<?php echo $product->id; ?>" class="btn btn-warning">Sửa</a>
             <a href="/webbanhang/Product/delete/<?php echo $product->id; ?>" class="btn btn-danger" onclick="return confirm('Bạn có chắc chắn muốn xóa sản phẩm này?');">Xóa</a>
+            <a href="/webbanhang/Product/addToCart/<?php echo $product->id; ?>"class="btn btn-primary">Thêm vào giỏ hàng</a>
         </li>
     <?php endforeach; ?>
 </ul>

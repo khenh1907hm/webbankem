@@ -37,7 +37,7 @@ class ProductController
     {
         $product = $this->productModel->getProductById($id);
         if ($product) {
-            include './views/product/show.php';
+            include 'app/views/product/show.php';
         } else {
             echo "Không thấy sản phẩm.";
         }

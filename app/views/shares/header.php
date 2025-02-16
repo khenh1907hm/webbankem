@@ -1,7 +1,3 @@
-<?php
-require_once __DIR__ . "/../../helpers/SessionHelper.php";
- ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -19,7 +15,8 @@ require_once __DIR__ . "/../../helpers/SessionHelper.php";
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="#">Quản lý sản phẩm</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav"
+            aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
         <div class="collapse navbar-collapse" id="navbarNav">
@@ -30,24 +27,33 @@ require_once __DIR__ . "/../../helpers/SessionHelper.php";
                 <li class="nav-item">
                     <a class="nav-link" href="/webbanhang/Product/add">Thêm sản phẩm</a>
                 </li>
-                <li class="nav-item">
-                    <?php 
-                    if (SessionHelper::isLoggedIn()) {
-                        echo "<a class='nav-link'>".$_SESSION['username']."</a>";
-                    } else {
-                        echo "<a class='nav-link' href='/webbanhang/account/login'>Login</a>";
-                    }
-                    ?>
+                <li class="nav-item" id="nav-login">
+                    <a class="nav-link" href="/webbanhang/account/login">Login</a>
                 </li>
-                <li class="nav-item">
-                    <?php 
-                    if (SessionHelper::isLoggedIn()) {
-                        echo "<a class='nav-link' href='/webbanhang/account/logout'>Logout</a>";
-                    }
-                    ?>
+                <li class="nav-item" id="nav-logout" style="display: none;">
+                    <a class="nav-link" href="#" onclick="logout()">Logout</a>
                 </li>
             </ul>
         </div>
     </nav>
+    
+    <script>
+        function logout() {
+            localStorage.removeItem('jwtToken');
+            location.href = '/webbanhang/account/login';
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const token = localStorage.getItem('jwtToken');
+            if (token) {
+                document.getElementById('nav-login').style.display = 'none';
+                document.getElementById('nav-logout').style.display = 'block';
+            } else {
+                document.getElementById('nav-login').style.display = 'block';
+                document.getElementById('nav-logout').style.display = 'none';
+            }
+        });
+    </script>
+    
     <div class="container mt-4">
-        <!-- Nội dung trang -->
+    

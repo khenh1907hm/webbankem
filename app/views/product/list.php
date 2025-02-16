@@ -1,9 +1,7 @@
 <?php include 'app/views/shares/header.php'; ?>
 
 <h1>Danh sách sản phẩm</h1>
-
 <a href="/webbanhang/Product/add" class="btn btn-success mb-2">Thêm sản phẩm mới</a>
-
 <ul class="list-group" id="product-list">
     <!-- Danh sách sản phẩm sẽ được tải từ API và hiển thị tại đây -->
 </ul>
@@ -11,8 +9,21 @@
 <?php include 'app/views/shares/footer.php'; ?>
 
 <script>
-document.addEventListener("DOMContentLoaded", function() {
-    fetch('/webbanhang/api/product')
+    document.addEventListener("DOMContentLoaded", function() {
+        const token = localStorage.getItem('jwtToken');
+        if (!token) {
+            alert('Vui lòng đăng nhập');
+            location.href = '/webbanhang/account/login'; // Điều hướng đến trang đăng nhập
+            return;
+        }
+        
+        fetch('/webbanhang/api/product', {
+            method: 'GET',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + token
+            }
+        })
         .then(response => response.json())
         .then(data => {
             const productList = document.getElementById('product-list');
@@ -30,21 +41,21 @@ document.addEventListener("DOMContentLoaded", function() {
                 productList.appendChild(productItem);
             });
         });
-});
-
-function deleteProduct(id) {
-    if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
-        fetch(`/webbanhang/api/product/${id}`, {
-            method: 'DELETE'
-        })
-        .then(response => response.json())
-        .then(data => {
-            if (data.message === 'Product deleted successfully') {
-                location.reload();
-            } else {
-                alert('Xóa sản phẩm thất bại');
-            }
-        });
+    });
+    
+    function deleteProduct(id) {
+        if (confirm('Bạn có chắc chắn muốn xóa sản phẩm này?')) {
+            fetch(`/webbanhang/api/product/${id}`, {
+                method: 'DELETE'
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.message === 'Product deleted successfully') {
+                    location.reload();
+                } else {
+                    alert('Xóa sản phẩm thất bại');
+                }
+            });
+        }
     }
-}
 </script>

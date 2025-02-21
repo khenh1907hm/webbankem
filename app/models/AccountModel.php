@@ -8,12 +8,29 @@ Class AccountModel{
         $this-> conn = $db;
     }
     public function getAccountByUsername($username){
-        $query = "SELECT * FROM users WHERE username = :username";
+        $query = "SELECT id, username, password, role FROM users WHERE username = :username LIMIT 1";
         $stmt = $this->conn->prepare($query);
         $stmt->bindParam(':username', $username, PDO::PARAM_STR);
         $stmt->execute();
         $result = $stmt->fetch(PDO::FETCH_OBJ);
         return $result;
+    }
+    public function checkLogin($username, $password) {
+        $sql = "SELECT id, username, password, role FROM users 
+                WHERE username = :username LIMIT 1";
+                
+        $stmt = $this->conn->prepare($sql);
+        $stmt->bindValue(':username', $username);
+        $stmt->execute();
+        $user = $stmt->fetch();
+
+        // Debug
+        error_log("User data: " . print_r($user, true));
+        
+        if ($user && password_verify($password, $user['password'])) {
+            return $user;
+        }
+        return false;
     }
     function save($username, $name, $password, $role="user"){
         $query = "INSERT INTO " . $this->table_name . "(username, password, role) 
@@ -31,6 +48,6 @@ Class AccountModel{
             return true;
         }
             return false;
-        }
+    }
 }
 ?>

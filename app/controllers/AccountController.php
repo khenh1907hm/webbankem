@@ -1,6 +1,5 @@
 <?php
 require_once 'app/models/AccountModel.php';
-require_once 'app/config/database.php';
 require_once 'app/utils/JWTHandler.php';
 
 class AccountController {
@@ -15,11 +14,11 @@ class AccountController {
     }
 
     public function register() {
-        include_once 'app/views/account/register.php';
+        include_once 'app/views/admin/account/register.php';
     }
 
     public function login() {
-        include_once 'app/views/account/login.php';
+        include_once 'app/admin/views/account/login.php';
     }
 
     public function save() {
@@ -67,20 +66,31 @@ class AccountController {
         unset($_SESSION['role']);
         header('Location: /webbanhang/product');
     }
-
     public function checkLogin() {
         header('Content-Type: application/json');
         $data = json_decode(file_get_contents("php://input"), true);
         $username = $data['username'] ?? '';
         $password = $data['password'] ?? '';
+    
         $user = $this->accountModel->getAccountByUserName($username);
+    
         if ($user && password_verify($password, $user->password)) {
-            $token = $this->jwtHandler->encode(['id' => $user->id, 'username' => $user->username]);
-            echo json_encode(['token' => $token]);
+            // Tạo JWT chứa role
+            $token = $this->jwtHandler->encode([
+                'id' => $user->id,
+                'username' => $user->username,
+                'role' => $user->role  // Thêm role vào token
+            ]);
+    
+            echo json_encode([
+                'token' => $token,
+                'role' => $user->role // Gửi role về client
+            ]);
         } else {
             http_response_code(401);
-            echo json_encode(['message' => 'Invalid  credentials']);
+            echo json_encode(['message' => 'Invalid credentials']);
         }         
     }
+    
 }
 ?>

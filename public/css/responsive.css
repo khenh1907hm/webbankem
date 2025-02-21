@@ -1,0 +1,87 @@
+@media screen  and (min-width: 992px) {
+    .mobile-header{
+        display: none;
+    }
+    .show-mobile{
+        display: none;
+    }
+}
+@media screen  and (max-width: 991.98px) {
+    .navbar{
+        position: relative;
+        padding: 12px 0;
+    }
+    .navbar .logo{
+        position: absolute;
+        top: 50%;
+        right: 50%;
+        transform: translate(50%, -50%);
+    }
+    .navbar ul{
+        display: none;
+    }
+    .toggle-menu svg{
+        margin-left: 10px;
+        width: 24px;
+        color :#000336;
+    }
+    .menu-overlay{
+        position: fixed;
+        z-index:100;
+        inset:0;
+        background: rgba(0, 0, 0, 0.3);
+        opacity: 0;
+        visibility: hidden;
+        transition: 0.5s ease;
+    }
+    .menu-drawer{
+        padding: 60px;
+        position: fixed;
+        inset: 0 40% 0 0;
+        background-color: #fff;
+        z-index: 101;
+        transform: translateX(-100%);
+        transition: 0.5s ease;
+    }
+
+    /* ẩn hiện navbar */
+    .menu-checkbox:checked ~ .menu-overlay{
+        opacity: 1;
+        visibility: visible;
+    }
+    .menu-checkbox:checked ~.menu-drawer{
+        transform: translateX(0);
+    }
+    .menu-drawer ul{
+        margin-top: 32px;
+    }
+    .menu-drawer ul a{
+        color: #333;
+        display: block;
+        padding: 14px 0;
+        font-weight: 500;
+    }
+    .separate {
+        border-top:1.5px solid  #ebebeb;
+    }
+}
+
+/* Moblie */
+@media screen  and (max-width: 767.98px) {
+    .menu-drawer{
+     padding: 40px;
+     inset: 0 25% 0 0;
+    }
+    .navbar{
+        padding: 15px 0;
+    }
+    .navbar .action{
+     display: none;
+    }
+    .header{
+     height: calc(100vh - 80px);
+    }
+    /* .logo{
+        display: none;
+    } */
+}

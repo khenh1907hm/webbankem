@@ -19,7 +19,7 @@ class ProductController
     private function loadView($view, $data = [])
     {
         extract($data); // Chuyển mảng thành biến
-        require "app/views/$view.php";
+        require "app/admin/views/$view.php";
     }
 
     public function index()
@@ -37,7 +37,7 @@ class ProductController
     {
         $product = $this->productModel->getProductById($id);
         if ($product) {
-            include 'app/views/product/show.php';
+            include 'app/admin/views/product/show.php';
         } else {
             echo "Không thấy sản phẩm.";
         }

@@ -1,7 +1,7 @@
 </div> <!-- closing content wrapper -->
     </div> <!-- closing main wrapper -->
     
-    <footer class="bg-dark text-white pt-5 pb-4 mt-5">
+    <footer class="bg-dark text-white pt-5 pb-4 mt-6">
         <div class="container">
             <div class="row">
                 <div class="col-md-3 col-lg-3 col-xl-3 mx-auto mt-3">

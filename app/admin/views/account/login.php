@@ -1,6 +1,4 @@
-<?php include 'app/admin/shares/header.php'; ?>
-
-<section class="vh-100 gradient-custom">
+<!-- <section class="vh-100 gradient-custom">
     <div class="container py-5 h-100">
         <div class="row d-flex justify-content-center align-items-center h-100">
             <div class="col-12 col-md-8 col-lg-6 col-xl-5">
@@ -47,7 +45,37 @@
     </div>
 </section>
 
-<?php include 'app/views/shares/footer.php'; ?>
+ -->
+<?php
+include_once 'app/admin/shares/header.php';
+?>
+ <div class="wrapper">
+			<div class="inner">
+				<img src="/webbanhang/public/img/image-1.png" alt="" class="image-1">
+				<form id="login-form" action="">
+					<h3>Login</h3>
+					<div class="form-holder">
+						<span class="lnr lnr-user"></span>
+						<input type="text" name="username" class="form-control" placeholder="Username">
+					</div>
+					<div class="form-holder">
+						<span class="lnr lnr-lock"></span>
+						<input type="password" name="password" class="form-control" placeholder="Password">
+					</div>
+					<button type="submit">
+						<span>Login</span>
+					</button>
+                    <div style="display: flex;justify-content: center;margin-top: 18px;">
+                        <p >Don't have an account? <a href="">Sign up</a></p>
+                    </div>
+				</form>
+				<img src="/webbanhang/public/img/image-2.png" alt="" class="image-2">
+			</div>
+			
+		</div>
+		
+		<script src="/webbanhang/public/js/jquery-3.3.1.min.js"></script>
+		<script src="/webbanhang/public/js/main.js"></script>
 
 <script>
     document.getElementById('login-form').addEventListener('submit', function(event) {
@@ -71,6 +99,7 @@
             if (data.token) {
                 localStorage.setItem('jwtToken', data.token);
                 localStorage.setItem('role',data.role);
+                localStorage.setItem('username' , data.username);
                 
                 if(data.role === 'admin'){
                     location.href ='/webbanhang/Product';

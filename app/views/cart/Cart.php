@@ -1,4 +1,4 @@
-<?php include 'app/admin/shares/header.php'; ?>
+<?php include 'app/views/share/headerClient.php'; ?>
 
 <h1>Giỏ hàng</h1>
 
@@ -12,8 +12,8 @@
                     <img src="/webbanhang/<?php echo $item['image']; ?>" alt="Product Image" style="max-width: 100px;">
                 <?php endif; ?>
 
-                <p>Giá: <?php echo htmlspecialchars($item['price'], ENT_QUOTES, 'UTF-8'); ?> VND</p>
-                <p>Số lượng: <?php echo htmlspecialchars($item['quantity'], ENT_QUOTES, 'UTF-8'); ?></p>
+                <p>Giá : <?php echo htmlspecialchars($item['price'], ENT_QUOTES, 'UTF-8'); ?> VND</p>
+                <p>Số lượng : <?php echo htmlspecialchars($item['quantity'], ENT_QUOTES, 'UTF-8'); ?></p>
             </li>
         <?php endforeach; ?>
     </ul>
@@ -24,4 +24,4 @@
 <a href="/webbanhang/Product" class="btn btn-secondary mt-2">Tiếp tục mua sắm</a>
 <a href="/webbanhang/Product/checkout" class="btn btn-secondary mt-2">Thanh Toán</a>
 
-<?php include 'app/views/shares/footer.php'; ?>
+<?php include 'app/views/share/footerClient.php'; ?>

@@ -65,18 +65,18 @@ a {
 
 .fixed-header {
     background-color: #E6F0FF;
-    /* padding-top: 26px; */
+    padding-top: 26px;
     top: -26px;
     position: sticky;
     z-index: 9;
 }
 
 .navbar {
-    /* position: sticky; */
+    position: sticky;
     display: flex;
     align-items: center;
-    /* padding-top: 38px; */
-    /* padding: 12px 0; */
+    padding-top: 38px;
+    padding: 24px 0;
 
 }
 

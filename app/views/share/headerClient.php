@@ -36,10 +36,13 @@
               <li class= "show-mobile"><a href="#Contact">Sign up</a></li>
             </ul>
             <!-- Acticve -->
-            <div class="action">
-              <a class="action-link" href="">Sign in</a>
-              <a class="btn action-btn" href="">Sign up</a>
-            </div>
+            <div class="action" id="auth-buttons">
+              <!-- Default state - will be updated by JavaScript -->
+              <a class="action-link" href="/webbanhang/account/login">Sign in</a>
+              <a class="btn action-btn" href="/webbanhang/account/register">Sign up</a>
+          </div>
+
+          <nav class="nav">
           </nav>
         </div>
     </header>

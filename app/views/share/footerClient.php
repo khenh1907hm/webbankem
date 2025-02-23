@@ -42,4 +42,42 @@
       </div>
      </div>
 </body>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const authButtons = document.getElementById('auth-buttons');
+    const token = localStorage.getItem('jwtToken');
+    const username = localStorage.getItem('username');
+
+    console.log('Token', token);
+    console.log('Username', username); 
+
+    if (token && username) {
+        // User đã đăng nhập
+        authButtons.innerHTML = `
+            <div class="dropdown">
+                
+                <ul class="dropdown-menu" aria-labelledby="userDropdown">
+                    <li><a class="dropdown-item" href="/webbanhang/account/profile">Thông tin tài khoản</a></li>
+                    <li><a class="dropdown-item" href="/webbanhang/order/history">Lịch sử đơn hàng</a></li>
+                    <li><hr class="dropdown-divider"></li>
+                    <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>
+                </ul>
+            </div>
+        `;
+    } else {
+        // User chưa đăng nhập
+        authButtons.innerHTML = `
+            <a class="action-link" href="/webbanhang/account/login">Sign in</a>
+            <a class="btn action-btn" href="/webbanhang/account/register">Sign up</a>
+        `;
+    }
+});
+
+function logout() {
+    localStorage.removeItem('jwtToken');
+    localStorage.removeItem('username');
+    localStorage.removeItem('role');
+    window.location.href = '/webbanhang/home';
+}
+</script>
 </html>

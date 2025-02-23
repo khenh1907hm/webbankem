@@ -182,7 +182,7 @@ class ProductController
     public function cart()
     {
         $cart = isset($_SESSION['cart']) ? $_SESSION['cart'] : [];
-        include 'app/views/product/cart.php';
+        include 'app/views/cart/cart.php';
     }
 
     public function checkout()

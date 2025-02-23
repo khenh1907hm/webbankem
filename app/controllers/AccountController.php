@@ -14,7 +14,7 @@ class AccountController {
     }
 
     public function register() {
-        include_once 'app/views/admin/account/register.php';
+        include_once 'app/admin/views/account/register.php';
     }
 
     public function login() {
@@ -83,7 +83,8 @@ class AccountController {
             ]);
     
             echo json_encode([
-                'token' => $token,
+                'username' => $user -> username, // gửi username về client 
+                'token' => $token, // gửi token về client
                 'role' => $user->role // Gửi role về client
             ]);
         } else {

@@ -1,6 +1,7 @@
 RewriteEngine On
 
 # Chuyển hướng tất cả request về index.php
+RewriteBase /webbanhang/
 
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d

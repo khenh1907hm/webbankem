@@ -7,9 +7,7 @@
     <link rel="stylesheet" href="/webbanhang/public/css/reset.css">
     <link rel="stylesheet" href="/webbanhang/public/css/styles.css">
     <link rel="stylesheet" href="/webbanhang/public/css/responsive.css">
-    <!-- <link rel="stylesheet" href="./assets/css/reset.css">
-    <link rel="stylesheet" href="./assets/css/styles.css">
-    <link rel="stylesheet" href="./assets/css/resposive.css"> -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css" integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Itim&family=Press+Start+2P&display=swap" rel="stylesheet">
     <title>Dely - Kem thuần chay</title>
 </head>
@@ -24,14 +22,14 @@
               <path fill="currentColor" d="M0 96C0 78.3 14.3 64 32 64l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 128C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32l384 0c17.7 0 32 14.3 32 32s-14.3 32-32 32L32 288c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32L32 448c-17.7 0-32-14.3-32-32s14.3-32 32-32l384 0c17.7 0 32 14.3 32 32z"/></svg>
              </label>
             <!-- Logo -->
-            <a href="#home"><img src="webbanhang/public/img/logo.png" alt="" class="logo" /></a>
+            <!-- <a href="#home"><img src="/webbanhang/public/img/logo.png" alt="" class="logo" /></a> -->
             <!-- Nav Links -->
             <ul id="pc-nav">
-              <li><a href="#home">Home</a></li>
-              <li><a href="#Service">Service</a></li>
-              <li><a href="#features">Features</a></li>
-              <li><a href="#Resource">Resource</a></li>
-              <li><a href="#Contact">Contact</a></li>
+              <li><a href="/webbanhang/home">Trang chủ</a></li>
+              <li><a href="/webbanhang/userproduct">Sản phẩm</a></li>
+              <li><a href="#features">Chia sẻ</a></li>
+              <li><a href="#Resource">Liên Hệ</a></li>
+              <!-- <li><a href="#Contact">Contact</a></li> -->
               <li class= "show-mobile separate"><a href="#Contact">Sign in</a></li>
               <li class= "show-mobile"><a href="#Contact">Sign up</a></li>
             </ul>
@@ -52,7 +50,7 @@
        <label for="menu-checkbox" class="menu-overlay"></label> 
        <!-- menu icon -->
         <div class="menu-drawer">
-          <a href="#home"><img src="webbanhang/public/img/Logo.svg" alt=""/></a>
+          <a href="#home"><img src="webbanhang/public/img/logo.svg" alt=""/></a>
             <!-- Nav Links -->
             <ul id="mobile-nav">
               

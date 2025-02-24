@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function() {
             <div class="dropdown">
                 
                 <ul class="dropdown-menu" aria-labelledby="userDropdown">
-                    <li><a class="dropdown-item" href="/webbanhang/account/profile">Thông tin tài khoản</a></li>
+                    <li><a class="dropdown-item" href="/webbanhang/profile">Thông tin tài khoản</a></li>
                     <li><a class="dropdown-item" href="/webbanhang/order/history">Lịch sử đơn hàng</a></li>
                     <li><hr class="dropdown-divider"></li>
                     <li><a class="dropdown-item" href="#" onclick="logout()">Đăng xuất</a></li>

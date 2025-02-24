@@ -332,47 +332,11 @@ a {
     background-image: url(../img/footer-bg.jpg);
     background-position: top;
 }
-/* .footer__inner{
-    display: flex;
-    justify-content: space-evenly;
-    padding: 50px 0;
-}
-.footer__heading,
-.footer__copany{
-    color: #000336;
-    font-size: 1.8rem;
-    font-weight: 600;
-}
-.footer__map{
-    width: 300px;
-    height: 200px;
-}
-.footer__item{
-    width: 300px;
-}
-.footer__copy{
-    position: relative;
-    width: 100%;
-    color: #363131;
-}
-.footer__copy::after{
-    position: absolute;
-    top: -5px;
-    z-index: 5;
-    content: "";
-    width: 100%;
-    height: 2px;
-    background-color: #cdcdcd;
-    display: block;
-}
-.footer__cpr{
-    text-align: center;
-} */
 .footer__inner {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 40px;
-    margin-bottom: 40px;
+    padding: 40px;
 }
 
 .footer__list {
